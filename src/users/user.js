@@ -18,8 +18,8 @@ const UserSchema = new mongoose.Schema({
   },
   passoword: {
     type: String,
-    required: true
-    // select: false
+    required: true,
+    select: false
   },
   avatar: {
     type: String,
