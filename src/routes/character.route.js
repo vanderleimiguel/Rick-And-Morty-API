@@ -1,8 +1,8 @@
-const route = require('express'.Router())
+const route = require('express').Router()
 const controllercharacters = require('../controllers/character.controller')
 
 route.get('/', controllercharacters.findAllCharactersController)
-route.get('/find/:id', controllerCharacters.findByIdCharacterController)
+route.get('/find/:id', controllercharacters.findByIdCharacterController)
 route.post('/create', controllercharacters.createCharacterController)
 route.put('/update/:id', controllercharacters.updateCharacterController)
 route.delete('delete:id', controllercharacters.deleteCharacterController)
