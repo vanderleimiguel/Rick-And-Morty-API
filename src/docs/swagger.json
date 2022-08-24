@@ -31,11 +31,11 @@
               "examples": {
                 "User": {
                   "value": {
-                    "name": "Hyoga",
-                    "username": "Cisne",
-                    "email": "Bronze",
+                    "name": "joaoMiguel",
+                    "username": "joao",
+                    "email": "joao@hotmail.com",
                     "password": "123456",
-                    "photo": "Pó de diamante"
+                    "photo": "http://joao"
                     
                   }
                 }
@@ -95,8 +95,8 @@
               "examples": {
                 "Login": {
                   "value": {
-                    "email": "Hyoga",
-                    "password": "Cisne"
+                    "email": "joao@hotmail.com",
+                    "password": "123456"
                                         
                   }
                 }
@@ -135,8 +135,8 @@
               "examples": {
                 "character": {
                   "value": {
-                    "name": "Hyoga",
-                    "image": "Cisne"
+                    "name": "joaoMiguel",
+                    "image": "http://joao"
                     
                   }
                 }
@@ -236,8 +236,8 @@
               "examples": {
                 "character": {
                   "value": {
-                    "name": "Saga",
-                    "image": "Gemeos"
+                    "name": "joaoMiguel",
+                    "image": "http://joao"
                     
                   }
                 }
@@ -296,38 +296,7 @@
       }
     }
   },
-  "/characters/search/": {
-    "get": {
-      "summary": "Buscar um personagem por nome",
-      "tags": ["Characters"],
-      "parameters": [
-        {
-          "name": "name",
-          "in": "path",
-          "description": "name the character to be finded",
-          "required": true
-        }
-      ],
-      "responses": {
-        "400": {
-          "description": "Not found"
-        },
-        "200": {
-          "description": "OK",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "items": {
-                  "$ref": "#/components/schemas/character"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
+
   "components": {
     "schemas": {
       "user": {
