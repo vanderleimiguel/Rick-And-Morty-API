@@ -32,7 +32,7 @@ const deleteCharacterService = async id => {
 
 //search
 const searchCharacterService = async name => {
-  return await Character.findByName(name)
+  return await Character.findOne({ name: name })
 }
 
 module.exports = {

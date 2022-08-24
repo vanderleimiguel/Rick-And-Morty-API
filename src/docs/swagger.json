@@ -11,7 +11,7 @@
       "description": "DEV"
     },
     {
-      "url": "",
+      "url": "https://rickmorty-api1.herokuapp.com/",
       "description": "PROD"
     }
   ],
@@ -294,8 +294,39 @@
           }
         }
       }
+    },
+    "/characters/search": {
+      "get": {
+        "summary": "Buscar personagem por nome",
+      "tags": ["Characters"],
+      "parameters": [
+        {
+          "in": "query",
+          "name": "name",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          }
+        }
+      }
     }
+  }
+
   },
+    
 
   "components": {
     "schemas": {

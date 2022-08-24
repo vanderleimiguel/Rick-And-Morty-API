@@ -43,9 +43,9 @@ const deleteCharacterController = async (req, res) => {
 
 //search
 const searchCharacterController = async (req, res) => {
-  const searchParam = req.query
-  const search = await characterService.searchCharacterService(searchParam)
-  res.send(search)
+  const name = req.query.name
+  const searchName = await characterService.searchCharacterService(name)
+  res.status(200).send(searchName)
 }
 
 //exports functions
