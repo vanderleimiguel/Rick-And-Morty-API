@@ -1,1 +1,362 @@
-{}
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Rick and Morty API",
+    "description": "API from Rick and Morty"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3002/",
+      "description": "DEV"
+    },
+    {
+      "url": "",
+      "description": "PROD"
+    }
+  ],
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/users/create": {
+      "post": {
+        "summary": "Criar um novo usuário",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              },
+              "examples": {
+                "User": {
+                  "value": {
+                    "name": "Hyoga",
+                    "username": "Cisne",
+                    "email": "Bronze",
+                    "password": "123456",
+                    "photo": "Pó de diamante"
+                    
+                  }
+                }
+              },
+              "responses": {
+                "400": {
+                  "description": "Bad request"
+                },
+                "201": {
+                  "description": "User Created",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/user"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "summary": "Buscar todos os usuários",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/user"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Entrar na API do Rick and Morty",
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/login"
+              },
+              "examples": {
+                "Login": {
+                  "value": {
+                    "email": "Hyoga",
+                    "password": "Cisne"
+                                        
+                  }
+                }
+              },
+              "responses": {
+                "400": {
+                  "description": "Bad request"
+                },
+                "201": {
+                  "description": "Login OK",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/login"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/create": {
+      "post": {
+        "summary": "Criar um novo Personagem",
+        "tags": ["Characters"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/character"
+              },
+              "examples": {
+                "character": {
+                  "value": {
+                    "name": "Hyoga",
+                    "image": "Cisne"
+                    
+                  }
+                }
+              },
+              "responses": {
+                "400": {
+                  "description": "Bad request"
+                },
+                "201": {
+                  "description": "Characters Created",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/character"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/": {
+      "get": {
+        "summary": "Busca todos os personagens",
+        "tags": ["Characters"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/find/{id}": {
+      "get": {
+        "summary": "Buscar um personagem por id",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id the character to be finded",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#/components/schemas/character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/update/{id}": {
+      "put": {
+        "summary": "Editar um personagem pelo ID",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id the Character to be update",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#components/schemas/character"
+              },
+              "examples": {
+                "character": {
+                  "value": {
+                    "name": "Saga",
+                    "image": "Gemeos"
+                    
+                  }
+                }
+              },
+              "responses": {
+                "400": {
+                  "description": "Bad request"
+                },
+                "200": {
+                  "description": "Character Updated",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "$ref": "#components/schemas/character"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/delete/{id}": {
+      "delete": {
+        "summary": "Apagar um personagem pelo ID",
+        "tags": ["Characters"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id the Character to be deleted",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Not found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "$ref": "#components/schemas/character"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/characters/search/": {
+    "get": {
+      "summary": "Buscar um personagem por nome",
+      "tags": ["Characters"],
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "description": "name the character to be finded",
+          "required": true
+        }
+      ],
+      "responses": {
+        "400": {
+          "description": "Not found"
+        },
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "items": {
+                  "$ref": "#/components/schemas/character"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "user": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "username": { "type": "string" },
+          "email": { "type": "string" },
+          "password": { "type": "string" },
+          "photo": { "type": "string" }
+        }
+      },
+      "character": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "image": { "type": "string" }
+        }
+      },
+      "login": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" }
+        }
+      }
+    }
+
+  }
+}
