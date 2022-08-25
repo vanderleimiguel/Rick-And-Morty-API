@@ -1,5 +1,5 @@
 const route = require('express').Router()
-const controllercharacters = require('./character.controller')
+const controllercharacters = require('../controllers/character.controller')
 
 route.get('/', controllercharacters.findAllCharactersController)
 route.get('/find/:id', controllercharacters.findByIdCharacterController)

@@ -1,4 +1,4 @@
-const Character = require('./character')
+const Character = require('../databases/mongo/schemas/character')
 
 //GetAll
 const findAllCharactersService = async () => {

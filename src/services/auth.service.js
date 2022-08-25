@@ -1,4 +1,4 @@
-const User = require('../users/user')
+const User = require('../databases/mongo/schemas/user')
 const jwt = require('jsonwebtoken')
 
 const loginService = email => User.findOne({ email: email }).select('+password')

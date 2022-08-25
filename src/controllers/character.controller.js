@@ -1,4 +1,4 @@
-const characterService = require('./character.service')
+const characterService = require('../services/character.service')
 const mongoose = require('mongoose')
 
 // Get ALL
