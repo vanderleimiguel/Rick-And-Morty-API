@@ -90,7 +90,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/login"
+                "$ref": "#/components/schemas/user"
               },
               "examples": {
                 "Login": {
@@ -111,7 +111,7 @@
                     "application/json": {
                       "schema": {
                         "type": "object",
-                        "$ref": "#/components/schemas/login"
+                        "$ref": "#/components/schemas/user"
                       }
                     }
                   }
@@ -347,13 +347,6 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "image": { "type": "string" }
-        }
-      },
-      "login": {
-        "type": "object",
-        "properties": {
-          "email": { "type": "string" },
-          "password": { "type": "string" }
         }
       }
     }
