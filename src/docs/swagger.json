@@ -135,8 +135,8 @@
               "examples": {
                 "character": {
                   "value": {
-                    "name": "joaoMiguel",
-                    "image": "http://joao"
+                    "name": "Beta Seven",
+                    "image": "https://rickandmortyapi.com/api/character/avatar/36.jpeg"
                     
                   }
                 }
@@ -236,8 +236,8 @@
               "examples": {
                 "character": {
                   "value": {
-                    "name": "joaoMiguel",
-                    "image": "http://joao"
+                    "name": "Beta Seven",
+                    "image": "https://rickandmortyapi.com/api/character/avatar/36.jpeg"
                     
                   }
                 }
@@ -307,7 +307,7 @@
           "required": true
         }
       ],
-      "responses": {
+        "responses": {
         "200": {
           "description": "OK",
           "content": {
