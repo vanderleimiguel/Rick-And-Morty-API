@@ -4,14 +4,6 @@ const authService = require('../services/auth.service')
 const createUserController = async (req, res) => {
   const { name, username, email, password, photo } = req.body
 
-  if (!name || !username || !email || !password || !photo) {
-    return res.status(400).send({
-      message:
-        "Alguns campos estão faltando. Os campos são 'username', 'name', 'email', 'password', ou 'photo'."
-    })
-  }
-
-  // verify user exists
   const foundUser = await userService.findByEmailUserService(email)
   if (foundUser) {
     return res.status(400).send({

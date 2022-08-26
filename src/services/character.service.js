@@ -1,36 +1,40 @@
 const Character = require('../databases/mongo/schemas/character')
+const CharacterEntity = require('../entities/character.entity')
 
-//GetAll
 const findAllCharactersService = async () => {
   const allCharacter = await Character.find()
   return allCharacter
 }
 
-//GetById
 const findByIdCharacterService = async parametroId => {
   const oneCharacter = await Character.findById(parametroId)
   return oneCharacter
 }
 
-//create
-const createCharacterService = async newCharacter => {
-  const characterCreated = await Character.create(newCharacter)
+const createCharacterService = async character => {
+  const newCharacter = new CharacterEntity(character)
+  newCharacter.validObjectBody()
+  const newCharacterValidated = { ...newCharacter.getCharacter() }
+  const characterCreated = await Character.create(newCharacterValidated)
 
   return characterCreated
 }
 
-//update
 const updateCharacterService = async (id, characterEdited) => {
-  const updateCharacter = await Character.findByIdAndUpdate(id, characterEdited)
+  const newCharacterEdited = new CharacterEntity(characterEdited)
+  newCharacterEdited.validObjectBody()
+  const newCharacterEditedValidated = { ...newCharacterEdited.getCharacter() }
+  const updateCharacter = await Character.findByIdAndUpdate(
+    id,
+    newCharacterEditedValidated
+  )
   return updateCharacter
 }
 
-//delete
 const deleteCharacterService = async id => {
   return await Character.findByIdAndDelete(id)
 }
 
-//search
 const searchCharacterService = async name => {
   return await Character.findOne({ name: name })
 }

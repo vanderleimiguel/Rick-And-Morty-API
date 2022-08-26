@@ -4,7 +4,7 @@ const cors = require('cors')
 const connectDatabase = require('./databases/mongo/connection/database')
 const characterRoute = require('./routes/character.route')
 const userRoute = require('./routes/users.route')
-const authRoute = require('./routes/users.route')
+const authRoute = require('./routes/auth.route')
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./docs/swagger.json')
 
