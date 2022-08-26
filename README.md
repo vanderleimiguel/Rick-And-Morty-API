@@ -2,7 +2,7 @@
 
 API de personagens do Rick and Morty com Banco de dados MongDB Atlas
 Documentação via swagger com deploy no heroku
-Autentificação de usuarios com login e cadastro
+Autentificação de usuarios com login e cadastro com username, senha, token
 Projeto crud seguindo padrao mvr, com as rotas GetALL, GetById, getByName, Put, Post e Delete
 
 ## Deploy
