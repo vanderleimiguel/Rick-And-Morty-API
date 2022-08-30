@@ -1,5 +1,7 @@
+const crypto = require('node:crypto')
 class CharacterEntity {
   constructor(character) {
+    this.id = character.id ?? crypto.randomUUID()
     this.name = character.name
     this.image = character.image
   }
@@ -15,6 +17,7 @@ class CharacterEntity {
 
   getCharacter() {
     return {
+      id: this.id,
       name: this.name,
       image: this.image
     }

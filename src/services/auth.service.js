@@ -1,10 +1,25 @@
 const User = require('../databases/mongo/schemas/user')
 const jwt = require('jsonwebtoken')
 
-const loginService = email => User.findOne({ email: email }).select('+password')
+class AuthServices {
+  findUserByEmail = async email => {
+    return await User.findOne({ email: email }).select('+password')
+  }
 
-const generateToken = userId => {
-  return jwt.sign({ id: userId }, process.env.SECRET, { expiresIn: 86400 })
+  findUserById = async userId => {
+    return await User.findOne({ _id: userId }).select('+password')
+  }
+
+  verifyPassword = async (password, user) => {
+    if (user.password === password) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  generateToken = userId =>
+    jwt.sign({ _id: userId }, process.env.SECRET, { expiresIn: 86400 })
 }
 
-module.exports = { loginService, generateToken }
+module.exports = authServices = new AuthServices()

@@ -1,21 +1,29 @@
-require('dotenv').config()
-const authService = require('../services/auth.service')
+const authServices = require('../services/auth.service')
 const bcrypt = require('bcryptjs')
 
-const loginController = async (req, res) => {
-  const { email, password } = req.body
-  const user = await authService.loginService(email)
-  if (!user) {
-    return res.status(400).send({ message: 'usuario não encontrado' })
-  }
-  const isPasswordValid = await bcrypt.compare(password, user.password)
-  if (!isPasswordValid) {
-    return res.status(400).send({ message: 'senha invalida' })
-  }
+class AuthControllers {
+  loginController = async (req, res) => {
+    try {
+      const { email, password } = req.body
+      const foundUser = await authServices.findUserByEmail(email)
 
-  const token = authService.generateToken(user.id)
+      if (!foundUser) {
+        res.status(400).send({ message: 'Usuario não encontrado' })
+      } else {
+        const verify = await bcrypt.compare(password, foundUser.password)
 
-  res.send({ token })
+        const token = authServices.generateToken(foundUser._id)
+
+        if (verify === true) {
+          res.status(200).send({ token: token })
+        } else {
+          res.status(400).send({ message: 'Senha errada' })
+        }
+      }
+    } catch (err) {
+      res.status(400).send({ message: 'Error during login' })
+    }
+  }
 }
 
-module.exports = { loginController }
+module.exports = authControllers = new AuthControllers()

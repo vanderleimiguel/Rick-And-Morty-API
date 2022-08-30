@@ -81,12 +81,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "Não encontrado"
-          },
-          "401": {
-            "description": "Não autorizado"
           }
         }
       }
@@ -109,22 +103,21 @@
                                         
                   }
                 }
-              }
-              
-            }
-          }
-        },
-        "responses": {
-          "400": {
-            "description": "Bad request"
-          },
-          "201": {
-            "description": "Login OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "$ref": "#/components/schemas/user"
+              },
+              "responses": {
+                "400": {
+                  "description": "Bad request"
+                },
+                "201": {
+                  "description": "Login OK",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/user"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -136,11 +129,6 @@
       "post": {
         "summary": "Criar um novo Personagem",
         "tags": ["Characters"],
-        "security": [
-          {
-            "token": []
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -181,11 +169,6 @@
       "get": {
         "summary": "Busca todos os personagens",
         "tags": ["Characters"],
-        "security": [
-          {
-            "token": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -207,11 +190,6 @@
       "get": {
         "summary": "Buscar um personagem por id",
         "tags": ["Characters"],
-        "security": [
-          {
-            "token": []
-          }
-        ],
         "parameters": [
           {
             "name": "id",
@@ -244,11 +222,6 @@
       "put": {
         "summary": "Editar um personagem pelo ID",
         "tags": ["Characters"],
-        "security": [
-          {
-            "token": []
-          }
-        ],
         "parameters": [
           {
             "name": "id",
@@ -297,11 +270,6 @@
       "delete": {
         "summary": "Apagar um personagem pelo ID",
         "tags": ["Characters"],
-        "security": [
-          {
-            "token": []
-          }
-        ],
         "parameters": [
           {
             "name": "id",
@@ -334,11 +302,6 @@
       "get": {
         "summary": "Buscar personagem por nome",
       "tags": ["Characters"],
-      "security": [
-        {
-          "token": []
-        }
-      ],
       "parameters": [
         {
           "in": "query",
@@ -388,13 +351,6 @@
           "name": { "type": "string" },
           "image": { "type": "string" }
         }
-      }
-    },
-    "securitySchemes": {
-      "token": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
 
