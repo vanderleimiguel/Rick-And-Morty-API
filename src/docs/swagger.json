@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3002/",
+      "url": "http://localhost:3002",
       "description": "DEV"
     },
     {
-      "url": "https://rickmorty-api1.herokuapp.com/",
+      "url": "https://rickmorty-api1.herokuapp.com",
       "description": "PROD"
     }
   ],
