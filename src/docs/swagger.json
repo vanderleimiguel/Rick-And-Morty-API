@@ -36,24 +36,23 @@
                     "email": "joao@hotmail.com",
                     "password": "123456",
                     "photo": "http://joao"
-                    
                   }
                 }
-              },
-              "responses": {
-                "400": {
-                  "description": "Bad request"
-                },
-                "201": {
-                  "description": "User Created",
-                  "content": {
-                    "application/json": {
-                      "schema": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/user"
-                      }
-                    }
-                  }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "201": {
+            "description": "User Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/user"
                 }
               }
             }
@@ -353,7 +352,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
+                "type": "object",
                 "items": {
                   "$ref": "#/components/schemas/Character"
                 }
